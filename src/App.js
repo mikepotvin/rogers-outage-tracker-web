@@ -5,6 +5,7 @@ import { getDatabase, onChildAdded, onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { firebaseConfig } from "./firebaseConfig";
 import OutageTable from "./OutageTable";
+import { Container } from "@mui/material";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,7 +29,7 @@ function App() {
       snapshot.forEach((child) => {
         list.push(child.val());
       });
-      setOutages(list);
+      setOutages(list.reverse());
     });
   }
 
@@ -38,7 +39,9 @@ function App() {
 
   return (
     <div className="App">
-      <OutageTable data={outages} />
+      <Container maxWidth="md">
+        <OutageTable data={outages} />
+      </Container>
     </div>
   );
 }
