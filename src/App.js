@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onChildAdded, onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { firebaseConfig } from "./firebaseConfig";
+import OutageTable from "./OutageTable";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,11 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
-        {outages.map((x) => (
-          <li>{x.text}</li>
-        ))}
-      </ul>
+      <OutageTable data={outages} />
     </div>
   );
 }
